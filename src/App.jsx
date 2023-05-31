@@ -2,33 +2,48 @@ import { useState } from 'react'
 
 import './App.css'
 import Card from './Componente/Card'
+import Formulario from './Componente/Formulario'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div className="App" 
-    style={{
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center'}}>
+  const [show, setShow] = useState(false)
+  const [error, setError] = useState(false)
 
-      <h1>Carga de estudiantes </h1>
-      
-      <form style={{
-          display:'flex',
-          flexDirection:'column',
-          width :'200px',
-          alignItems:'center',
-          }}>
+  const [viaje, setViaje] = useState({
+    name: '',
+    tipoViaje: '',
+    date: null
+  }) 
+ 
+ 
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (viaje.name.length >3 && viaje.tipoViaje.length>6) {
+      setShow(true)
+      setError(false)
+    }else{
+      setError(true)
+    }
+   
+  }
 
 
+return(
+  <>
+    <h1>Ingresar viaje a mi agenda</h1>
 
-      </form>
+    <Formulario handleSubmit= {handleSubmit} setViaje={setViaje} />
 
-      <Card/>
-    </div>
-  )
+    {show && <Card viaje={viaje}/>}
+    {error && 'Por favor chequea que la información sea correcta'}
+
+  </>
+
+)
+
 }
 
 export default App
+

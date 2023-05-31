@@ -1,18 +1,18 @@
 import React from 'react'
 
-const Card = () => {
+
+const Card = ({viaje}) => {
   return (
-    <div  
-    style={{width: '300px',
-        height: '400px',
-        border: '3px solid rgb(89, 57, 116)',
-        backgroundColor: 'rgb(35, 49, 81)',
-        marginBottom: '10px',}}>
-        <h2>
-        Hola soy una tarjeta
-        </h2>
+    <div className='card' >
+        <h2>Nos vamos de viaje a {viaje.name}</h2>
+    
+        <h3>Mi viaje es para {viaje.tipoViaje}</h3>
+
+        <h3>Fecha de mi viaje {viaje.date}</h3>
+
+        <h1>LEST GOO!!</h1>
     </div>
   )
 }
-
-export default Card
+ 
+export default Card 
